@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金逸會籍 - 大灣區商戶少勞多得顧問</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --secondary: #d4af37;
+            --accent: #2d5aa0;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 頭部樣式 */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .apply-btn {
+            background-color: var(--secondary);
+            color: var(--primary);
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .apply-btn:hover {
+            background-color: #e6c12e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* 英雄區域 */
+        .hero {
+            background: linear-gradient(rgba(26, 54, 93, 0.85), rgba(26, 54, 93, 0.9)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: var(--primary);
+            border: none;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* 搜索和篩選 */
+        .search-filter {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            margin: -3rem auto 2rem;
+            position: relative;
+            z-index: 10;
+            max-width: 1100px;
+        }
+        
+        .search-box {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+        
+        .search-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .category {
+            background-color: var(--light);
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .category.active, .category:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* 課程列表 */
+        .courses-section {
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .course-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .course-img {
+            height: 180px;
+            background-color: var(--light-gray);
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .course-content {
+            padding: 1.5rem;
+        }
+        
+        .course-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        .course-description {
+            color: var(--gray);
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+        }
+        
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.2rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .course-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+        }
+        
+        .enroll-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .enroll-btn:hover {
+            background-color: var(--accent);
+        }
+        
+        /* 模態框樣式 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: modalFade 0.3s;
+        }
+        
+        @keyframes modalFade {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+        
+        .modal-body {
+            padding: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-control:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(45, 90, 160, 0.2);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .modal-footer {
+            padding: 1.5rem;
+            border-top: 1px solid var(--light-gray);
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+        
+        .membership-benefits {
+          margin-top: 50%;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .benefit-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .benefit-list {
+            list-style-type: none;
+        }
+        
+        .benefit-list li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .benefit-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+        
+        /* 雙通道選擇樣式 */
+        .path-selection {
+            display: flex;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .path-card {
+            flex: 1;
+            border: 2px solid var(--light-gray);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .path-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .path-card.recommended {
+            border-color: var(--secondary);
+            position: relative;
+        }
+        
+        .path-card.recommended:before {
+            content: "推薦";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--secondary);
+            color: var(--primary);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .path-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .path-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .path-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .path-description {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .path-features {
+            list-style-type: none;
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+        
+        .path-features li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .path-features li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        /* 頁腳樣式 */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #d1d5db;
+            font-size: 0.9rem;
+        }
+        
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .path-selection {
+                flex-direction: column;
+            }
+            .membership-benefits {
+              margin-top: 190%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 頭部 -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">👑</span>
+                    金逸顧問
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#">首頁</a></li>
+                    <li><a href="#">課程</a></li>
+                    <li><a href="#">講師</a></li>
+                    <li><a href="#">關於我們</a></li>
+                    <li><a href="#">聯繫我們</a></li>
+                </ul>
+                <button class="apply-btn" id="applyMembershipBtn">申請金逸會籍</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄區域 -->
+    <section class="hero">
+        <div class="container">
+            <h1>全球首個專注大灣區商戶少勞多得經營體系的顧問</h1>
+            <p>加入金逸會籍，尊享總值50,000港元的金逸通寶權益，精準鏈接知識、宣傳與渠道，實現少勞多得。</p>
+            <div class="hero-btns">
+                <a href="#" class="btn btn-primary" id="heroApplyBtn">申請金逸會籍</a>
+                <a href="#" class="btn btn-outline">瀏覽課程</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 搜索和篩選 -->
+    <div class="container">
+        <div class="search-filter">
+            <div class="search-box">
+                <input type="text" placeholder="搜索課程...">
+                <button class="search-btn">搜索</button>
+            </div>
+            <div class="categories">
+                <div class="category active">全部</div>
+                <div class="category">法律合規</div>
+                <div class="category">營銷推廣</div>
+                <div class="category">運營管理</div>
+                <div class="category">技術應用</div>
+                <div class="category">金融財稅</div>
+                <div class="category">人力資源</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 課程列表 -->
+    <section class="courses-section">
+        <div class="container">
+            <h2 class="section-title">精選課程</h2>
+            <div class="courses-grid">
+                <!-- 課程卡片 1 -->
+                <div class="course-card">
+                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="course-content">
+                        <h3 class="course-title">大灣區營商法律實務與風險防範</h3>
+                        <p class="course-description">深入解析大灣區營商法律環境，掌握關鍵法律風險防範策略，保障企業穩健發展。</p>
+                        <div class="course-meta">
+                            <span>王律師</span>
+                            <span>2小時</span>
+                        </div>
+                        <div class="course-price">HK$ 1,288</div>
+                        <button class="enroll-btn" data-course="大灣區營商法律實務與風險防範">立即報名</button>
+                    </div>
+                </div>
+                
+                <!-- 課程卡片 2 -->
+                <div class="course-card">
+                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="course-content">
+                        <h3 class="course-title">數字營銷策略：從零到千萬營收</h3>
+                        <p class="course-description">學習高效的數字營銷策略，掌握社交媒體、內容營銷和SEO等關鍵技能，實現業務快速增長。</p>
+                        <div class="course-meta">
+                            <span>張總監</span>
+                            <span>3小時</span>
+                        </div>
+                        <div class="course-price">HK$ 1,288</div>
+                        <button class="enroll-btn" data-course="數字營銷策略：從零到千萬營收">立即報名</button>
+                    </div>
+                </div>
+                
+                <!-- 課程卡片 3 -->
+                <div class="course-card">
+                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="course-content">
+                        <h3 class="course-title">高效團隊管理與領導力提升</h3>
+                        <p class="course-description">掌握團隊管理核心技能，提升領導力，打造高效協作團隊，實現組織目標。</p>
+                        <div class="course-meta">
+                            <span>李教授</span>
+                            <span>2.5小時</span>
+                        </div>
+                        <div class="course-price">HK$ 1,288</div>
+                        <button class="enroll-btn" data-course="高效團隊管理與領導力提升">立即報名</button>
+                    </div>
+                </div>
+                
+                <!-- 課程卡片 4 -->
+                <div class="course-card">
+                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="course-content">
+                        <h3 class="course-title">跨境電商全攻略：從選品到物流</h3>
+                        <p class="course-description">全面掌握跨境電商運營流程，學習選品策略、平臺運營和物流解決方案，開拓國際市場。</p>
+                        <div class="course-meta">
+                            <span>陳經理</span>
+                            <span>3小時</span>
+                        </div>
+                        <div class="course-price">HK$ 1,288</div>
+                        <button class="enroll-btn" data-course="跨境電商全攻略：從選品到物流">立即報名</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 課程詳情模態框 -->
+    <div class="modal" id="courseDetailModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="courseDetailTitle">課程標題</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="course-video">
+                    <!-- 這裡可以放置課程視頻 -->
+                    <div style="background-color: #000; height: 300px; display: flex; align-items: center; justify-content: center; color: white; margin-bottom: 1.5rem;">
+                        課程視頻播放區域
+                    </div>
+                </div>
+                <div class="course-full-description">
+                    <h4>課程詳情</h4>
+                    <p id="courseFullDescription">這裡是課程的完整描述，包含詳細的教學內容、學習目標和預期收穫。</p>
+                    
+                    <h4>講師介紹</h4>
+                    <div id="instructorInfo">
+                        <p>講師姓名：XXX</p>
+                        <p>專業背景：XXX</p>
+                        <p>教學經驗：XXX</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" style="color: var(--dark); border-color: var(--gray);">收藏課程</button>
+                <button class="btn btn-primary enroll-course-btn">立即報名</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 雙通道選擇模態框 -->
+    <div class="modal" id="pathSelectionModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">請選擇您的學習路徑</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem;">金逸顧問為您提供更高效的成功方案</p>
+                
+                <div class="path-selection">
+                    <!-- 會籍路徑 -->
+                    <div class="path-card recommended">
+                        <div class="path-icon">👑</div>
+                        <h3 class="path-title">金逸會籍通道</h3>
+                        <div class="path-price">HK$ 1,288/年</div>
+                        <p class="path-description">成為會籍夥伴，本課程免費，並解鎖全年商業生態</p>
+                        <ul class="path-features">
+                            <li>本課程免費</li>
+                            <li>全年所有課程免費/1折</li>
+                            <li>5萬金逸通寶權益</li>
+                            <li>優先審核，加入精英圈層</li>
+                            <li>專屬客戶經理</li>
+                        </ul>
+                        <button class="btn btn-primary" id="selectMembershipPath">申請會籍，享受特權</button>
+                    </div>
+                    
+                    <!-- 單課路徑 -->
+                    <div class="path-card">
+                        <div class="path-icon">📚</div>
+                        <h3 class="path-title">單課學習通道</h3>
+                        <div class="path-price">HK$ 1,288/次</div>
+                        <p class="path-description">僅參加本次課程學習</p>
+                        <ul class="path-features">
+                            <li>參加本次課程學習</li>
+                            <li>獲取課程資料</li>
+                            <li>課程期間講師答疑</li>
+                        </ul>
+                        <button class="btn btn-outline" id="selectSinglePath" style="color: var(--dark); border-color: var(--gray);">僅報名此課程</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 課程報名模態框 -->
+    <div class="modal" id="enrollModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">報名課程</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="enrollForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">姓名</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">微信 / whatsapp</label>
+                            <input type="tel" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">公司名稱</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">公司地址</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">行業類別</label>
+                        <select class="form-control" required>
+                            <option value="">請選擇行業</option>
+                            <option value="零售">零售</option>
+                            <option value="餐飲">餐飲</option>
+                            <option value="製造">製造</option>
+                            <option value="服務">服務</option>
+                            <option value="科技">科技</option>
+                            <option value="金融">金融</option>
+                            <option value="其他">其他</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">為何報名此課程</label>
+                        <textarea class="form-control" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">商業登記號碼/統一社會信用代碼</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" style="color: var(--dark); border-color: var(--gray);" id="backToPathSelection">返回選擇</button>
+                <button class="btn btn-primary" id="submitEnroll">提交報名</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 會籍申請模態框 -->
+    <div class="modal" id="membershipModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">申請金逸會籍</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="membership-benefits">
+    <h4 class="benefit-title">金逸會籍尊享權益</h4>
+    <ul class="benefit-list">
+        <li>全年所有課程免費或以會籍權益抵扣</li>
+        <li>尊享50,000金逸通寶（1金逸通寶 = 1港元）專屬權益額度</li>
+        <li>優先參與金逸顧問舉辦的獨家活動與研討會</li>
+        <li>獲得一對一商業諮詢服務</li>
+        <li>加入大灣區精英商業社群，拓展高端人脈</li>
+        <li>金逸通寶可用於平臺以下三大核心服務：
+            <ul class="sub-benefit-list">
+                <li><strong>老闆升級課程：</strong>報讀由不同行業專家演講的老闆升級課程（最多扣減90%）</li>
+                <li><strong>網紅宣傳：</strong>與過百位大灣區網紅合作，拍攝探店宣傳（最多扣減80%）</li>
+                <li><strong>商用服務優惠：</strong>享低於市場價格的各種商用服務（最多扣減20%）</li>
+            </ul>
+        </li>
+        <li>通寶分配：
+            <ul class="sub-benefit-list">
+                <li><strong>基礎通寶：</strong>3萬金逸通寶，可用於所有服務</li>
+                <li><strong>獎勵通寶：</strong>2萬金逸通寶，僅限用於"商用服務優惠"</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+                <form id="membershipForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">姓名</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">微信 / whatsapp</label>
+                            <input type="tel" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">公司名稱</label>
+                            <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">公司地址</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">行業類別</label>
+                        <select class="form-control" required>
+                            <option value="">請選擇行業</option>
+                            <option value="零售">零售</option>
+                            <option value="餐飲">餐飲</option>
+                            <option value="製造">製造</option>
+                            <option value="服務">服務</option>
+                            <option value="科技">科技</option>
+                            <option value="金融">金融</option>
+                            <option value="其他">其他</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">為何申請金逸會籍</label>
+                        <textarea class="form-control" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">商業登記號碼/統一社會信用代碼</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" style="color: var(--dark); border-color: var(--gray);" id="backToPathSelectionFromMembership">返回選擇</button>
+                <button class="btn btn-primary" id="submitMembership">提交申請</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 頁腳 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>金逸顧問</h3>
+                    <p>全球首個專注大灣區商戶少勞多得經營體系的顧問，助力企業實現高效增長。</p>
+                </div>
+                <div class="footer-column">
+                    <h3>快速鏈接</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">首頁</a></li>
+                        <li><a href="#">課程</a></li>
+                        <li><a href="#">講師</a></li>
+                        <li><a href="#">關於我們</a></li>
+                        <li><a href="#">聯繫我們</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>聯繫我們</h3>
+                    <ul class="footer-links">
+                        <li>電話: +852 XXXX XXXX</li>
+                        <li>郵箱: info@golden-ease.com</li>
+                        <li>地址: 香港中環金融街8號</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>關注我們</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">微信公眾號</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Facebook</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 金逸顧問 版權所有
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 模態框控制
+        const courseDetailModal = document.getElementById('courseDetailModal');
+        const pathSelectionModal = document.getElementById('pathSelectionModal');
+        const enrollModal = document.getElementById('enrollModal');
+        const membershipModal = document.getElementById('membershipModal');
+        const closeModalButtons = document.querySelectorAll('.close-modal');
+        const enrollButtons = document.querySelectorAll('.enroll-btn');
+        const courseTitles = document.querySelectorAll('.course-title');
+        const applyMembershipBtn = document.getElementById('applyMembershipBtn');
+        const heroApplyBtn = document.getElementById('heroApplyBtn');
+        const enrollCourseBtn = document.querySelector('.enroll-course-btn');
+        const selectMembershipPath = document.getElementById('selectMembershipPath');
+        const selectSinglePath = document.getElementById('selectSinglePath');
+        const backToPathSelection = document.getElementById('backToPathSelection');
+        const backToPathSelectionFromMembership = document.getElementById('backToPathSelectionFromMembership');
+        const submitEnroll = document.getElementById('submitEnroll');
+        const submitMembership = document.getElementById('submitMembership');
+        
+        // 打開課程詳情模態框
+        courseTitles.forEach(title => {
+            title.addEventListener('click', () => {
+                document.getElementById('courseDetailTitle').textContent = title.textContent;
+                courseDetailModal.style.display = 'flex';
+            });
+        });
+        
+        // 打開雙通道選擇模態框
+        enrollButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                pathSelectionModal.style.display = 'flex';
+            });
+        });
+        
+        // 從課程詳情打開雙通道選擇
+        enrollCourseBtn.addEventListener('click', () => {
+            courseDetailModal.style.display = 'none';
+            pathSelectionModal.style.display = 'flex';
+        });
+        
+        // 選擇會籍路徑
+        selectMembershipPath.addEventListener('click', () => {
+            pathSelectionModal.style.display = 'none';
+            membershipModal.style.display = 'flex';
+        });
+        
+        // 選擇單課路徑
+        selectSinglePath.addEventListener('click', () => {
+            pathSelectionModal.style.display = 'none';
+            enrollModal.style.display = 'flex';
+        });
+        
+        // 返回雙通道選擇
+        backToPathSelection.addEventListener('click', () => {
+            enrollModal.style.display = 'none';
+            pathSelectionModal.style.display = 'flex';
+        });
+        
+        backToPathSelectionFromMembership.addEventListener('click', () => {
+            membershipModal.style.display = 'none';
+            pathSelectionModal.style.display = 'flex';
+        });
+        
+        // 打開會籍申請模態框
+        applyMembershipBtn.addEventListener('click', () => {
+            membershipModal.style.display = 'flex';
+        });
+        
+        heroApplyBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            membershipModal.style.display = 'flex';
+        });
+        
+        // 關閉模態框
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                courseDetailModal.style.display = 'none';
+                pathSelectionModal.style.display = 'none';
+                enrollModal.style.display = 'none';
+                membershipModal.style.display = 'none';
+            });
+        });
+        
+        // 點擊模態框外部關閉
+        window.addEventListener('click', (e) => {
+            if (e.target === courseDetailModal) {
+                courseDetailModal.style.display = 'none';
+            }
+            if (e.target === pathSelectionModal) {
+                pathSelectionModal.style.display = 'none';
+            }
+            if (e.target === enrollModal) {
+                enrollModal.style.display = 'none';
+            }
+            if (e.target === membershipModal) {
+                membershipModal.style.display = 'none';
+            }
+        });
+        
+        // 表單提交
+        submitEnroll.addEventListener('click', () => {
+            alert('課程報名提交成功！我們會盡快與您聯繫。');
+            enrollModal.style.display = 'none';
+        });
+        
+        submitMembership.addEventListener('click', () => {
+            alert('會籍申請提交成功！我們的顧問將在3-5個工作日內與您聯繫。');
+            membershipModal.style.display = 'none';
+        });
+        
+        // 分類篩選
+        const categories = document.querySelectorAll('.category');
+        categories.forEach(category => {
+            category.addEventListener('click', () => {
+                categories.forEach(c => c.classList.remove('active'));
+                category.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
